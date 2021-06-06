@@ -1,6 +1,7 @@
 import requests
+import tw
 import json
-PINCODE="0"
+PINCODE="271831"
 while len(PINCODE)!=6:
     PINCODE=input("Enter the pincode fo which you want the status =>")
     if len(PINCODE)<6:
@@ -8,7 +9,7 @@ while len(PINCODE)!=6:
     elif len(PINCODE)>6:
         print(f"{PINCODE} is longer than the actual length")
 
-DATE=input("Enter the Date to get status(Date format: DD-MM-YYYY")
+DATE = "07-06-2021"
 x = requests.get(f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={PINCODE}&date={DATE}")
 raw_json=x.json()
 
@@ -39,6 +40,3 @@ for cent in range(Total_centers):
     for _sess in range(len(this_session)):
         print( "{0:^12} {1:^12} {2:^13} {3:^14} {4:^16}" .format(this_session[_sess]['date'],this_session[_sess]['vaccine'], fee_val,this_session[_sess]
         ['min_age_limit'],this_session[_sess]['available_capacity'] ))
-
-
-
